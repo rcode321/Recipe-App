@@ -1,4 +1,5 @@
 import {
+	dividerClasses,
 	Grid,
 	List,
 	ListItem,
@@ -12,57 +13,65 @@ import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import CardComponent from "./../components/ui/CardComponent";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
 
-function Recipe(props) {
+function Recipe({title, text, type, geo, }) {
+	console.log(title)
 	const { id } = useParams();
-	const [loadedMeetups, setLoadedMeetups] = useState([]);
+	// const {ingredientId} = props
+	// console.log(ingredientId)
+	const [loadedMeetups, setLoadedMeetups] = useState({ data: [], repos: [] });
+	// console.log(loadedMeetups)
+	const specialsData = loadedMeetups.repos[0]
+	console.log(specialsData)
+	const recipesData = loadedMeetups.data.ingredients
+	console.log(recipesData)
+	
 	useEffect(() => {
-		console.log(id);
-		fetch(`http://localhost:3001/recipes/${id}`)
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => {
-				console.log(data);
-				// const meetups = [];
+		const fetchData = async () => {
+			const respGlobal = await axios(
+				`http://localhost:3001/recipes/${id}`
+				);
+				const respRepos = await axios(
+					`http://localhost:3001/specials/`
+					);
+					setLoadedMeetups({ data: respGlobal.data, repos: respRepos.data });
 
-				// for (const key in data) {
-				// 	const meetup = {
-				// 		id: key,
-				// 		...data[key],
-				// 	};
-				// 	meetups.push(meetup);
-				// }
-				setLoadedMeetups(data);
-			});
-	}, []);
+				};
+				fetchData();
+			}, []);
 
-	return (
-		<Grid className={classes.container}>
-			{/* <h1>Recipe Page </h1> */}
-			<CardComponent>
+			console.log(loadedMeetups.repos[0]?.text)
+			console.log(Object.keys(loadedMeetups))
+			if(specialsData === recipesData) {
+				console.log(specialsData)
+			
+			}
+			
+			
+			return (
+				<Grid className={classes.container}>
+				<CardComponent>
 				<Box className={classes.image}>
-					<img src={loadedMeetups.images?.full} alt={props.title} />
+				<img src={loadedMeetups.data?.images?.full} alt={title} />
 				</Box>
-				<Typography>{loadedMeetups.description}</Typography>
-
-				{/* <li>{`Servings: ${loadedMeetups.description}`}</li>
-					<li>{`Servings: ${loadedMeetups.servings}`}</li>
-					<li>{`Preparation time: ${loadedMeetups.prepTime}`}</li>
-					<li>{`Cooking time: ${loadedMeetups.cookTime}`}</li> */}
+				<p>{loadedMeetups.repos.title}</p>
+				<h2>{`SPECIALS: ${loadedMeetups.repos[0]?.title}`}</h2>
+			
+			<Typography>{loadedMeetups.description}</Typography>
 				<nav aria-label="secondary mailbox folders">
 					<List>
 						<Box disablePadding>
 							<ListItem>
-								<ListItemText primary={`Servings: ${loadedMeetups.servings}`} />
+								<ListItemText primary={`Servings: ${loadedMeetups.data?.servings}`} />
 							</ListItem>
 							<ListItem>
 								<ListItemText
-									primary={`Preperation time: ${loadedMeetups.prepTime}`}
+									primary={`Preperation time: ${loadedMeetups.data?.prepTime}`}
 								/>
 							</ListItem>
 							<ListItem>
-								<ListItemText primary={`Cooking time: ${loadedMeetups.cookTime}`} />
+								<ListItemText primary={`Cooking time: ${loadedMeetups.data?.cookTime}`} />
 							</ListItem>
 						</Box>
 					</List>

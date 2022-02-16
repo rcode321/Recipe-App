@@ -30,7 +30,6 @@ function MeetupItem(props) {
 		}
 	};
 
-	console.log(props);
 	return (
 		<Grid>
 			<CardRecipeComponent>
@@ -42,7 +41,9 @@ function MeetupItem(props) {
 					<Divider />
 				</CardContent>
 				<CardActions style={{ display: "flex", justifyContent: "center" }}>
-					<Button onClick={toggleFavoriteStatusHandler}>
+					<Button             
+						onMouseDown={event => event.stopPropagation()}
+						onClick={toggleFavoriteStatusHandler}>
 						{itemIsFavorite ? "Remove from favorites" : "To Favorites"}
 					</Button>
 				</CardActions>

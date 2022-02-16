@@ -13,13 +13,7 @@
 // 				</Box>
 // 				<CardContent className={classes.content}>
 // 					<Typography>{props.title}</Typography>
-// 					<address>{props.address}</address>
-// 					<p>{props.description}</p>
-// 					<p>{props.servings}</p>
-// 					<p>{props.prepTime}</p>
-// 					<p>{props.measurement}</p>
-// 					{props.editDate}
-// 					{props.ingredients}
+//             <p>{props.title}</p>
 // 				</CardContent>
 // 			</CardComponent>
 // 		</Grid>
