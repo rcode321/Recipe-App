@@ -2,6 +2,7 @@ import CardComponent from "../ui/CardComponent";
 import classes from "./NewMeetupForm.module.css";
 import Typography from "@mui/material/Typography";
 import { CardContent, Grid } from "@mui/material";
+import CardSpecials from "../ui/CardSpecials";
 // import { Box } from "@mui/system";
 
 function Specials(props) {
@@ -9,7 +10,7 @@ function Specials(props) {
 
 	return (
 		<Grid>
-			<CardComponent>
+			<CardSpecials>
 				{/* <Box className={classes.image}>
 					<img src={props.images.medium} alt={props.title} />
 				</Box> */}
@@ -19,7 +20,7 @@ function Specials(props) {
 					<Typography>{props.text}</Typography>
 					{isHavePromo ? `PROMO CODE ${props.code}` : ""}
 				</CardContent>
-			</CardComponent>
+			</CardSpecials>
 		</Grid>
 	);
 }

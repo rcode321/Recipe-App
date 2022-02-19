@@ -52,6 +52,8 @@ function Recipe({ title, text, type, geo }) {
 					servings={loadedMeetups.recipe?.servings}
 					prepTime={loadedMeetups.recipe?.prepTime}
 					cookTime={loadedMeetups.recipe?.cookTime}
+					postDate={loadedMeetups.recipe?.postDate}
+					editDate={loadedMeetups.recipe?.editDate}
 					images={loadedMeetups.recipe.images?.full}
 				/>
 			</CardComponent>

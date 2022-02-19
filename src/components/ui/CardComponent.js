@@ -11,6 +11,7 @@ const CardComponent = (props) => {
 			<Card
 				sx={{
 					width: 600,
+					marginTop: 20,
 				}}
 			>
 				<CardMedia
