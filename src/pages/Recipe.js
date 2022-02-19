@@ -15,55 +15,51 @@ import CardComponent from "./../components/ui/CardComponent";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 
-function Recipe({title, text, type, geo, }) {
-	console.log(title)
+function Recipe({ title, text, type, geo }) {
 	const { id } = useParams();
-	// const {ingredientId} = props
-	// console.log(ingredientId)
 	const [loadedMeetups, setLoadedMeetups] = useState({ data: [], repos: [] });
-	// console.log(loadedMeetups)
-	const specialsData = loadedMeetups.repos[0]
-	console.log(specialsData)
-	const recipesData = loadedMeetups.data.ingredients
-	console.log(recipesData)
-	
+	const [specials, setSpecials] = useState(null);
+
 	useEffect(() => {
 		const fetchData = async () => {
-			const respGlobal = await axios(
-				`http://localhost:3001/recipes/${id}`
-				);
-				const respRepos = await axios(
-					`http://localhost:3001/specials/`
-					);
-					setLoadedMeetups({ data: respGlobal.data, repos: respRepos.data });
+			const respGlobal = await axios(`http://localhost:3001/recipes/${id}`);
+			const respRepos = await axios(`http://localhost:3001/specials/`);
+			setLoadedMeetups({ data: respGlobal.data, repos: respRepos.data });
 
-				};
-				fetchData();
-			}, []);
+			let hasSpecial = false;
+			respGlobal?.data?.ingredients.forEach((ingr) => {
+				if (!hasSpecial) {
+					respRepos?.data?.forEach((e) => {
+						if (e.ingredientId === ingr.uuid) {
+							setSpecials({ ...e });
+							hasSpecial = true;
+						}
+					});
+				}
+			});
+			// console.log(respGlobal, respRepos, "datauus");
+		};
+		fetchData();
+	}, [id]);
 
-			console.log(loadedMeetups.repos[0]?.text)
-			console.log(Object.keys(loadedMeetups))
-			if(specialsData === recipesData) {
-				console.log(specialsData)
-			
-			}
-			
-			
-			return (
-				<Grid className={classes.container}>
-				<CardComponent>
+	console.log(specials, "specials");
+	return (
+		<Grid className={classes.container}>
+			<CardComponent>
 				<Box className={classes.image}>
-				<img src={loadedMeetups.data?.images?.full} alt={title} />
+					<img src={loadedMeetups.data?.images?.full} alt={title} />
 				</Box>
 				<p>{loadedMeetups.repos.title}</p>
-				<h2>{`SPECIALS: ${loadedMeetups.repos[0]?.title}`}</h2>
-			
-			<Typography>{loadedMeetups.description}</Typography>
+				<h2>{`SPECIALS: ${specials?.title ? specials.title : "None"}`}</h2>
+
+				<Typography>{loadedMeetups.description}</Typography>
 				<nav aria-label="secondary mailbox folders">
 					<List>
 						<Box disablePadding>
 							<ListItem>
-								<ListItemText primary={`Servings: ${loadedMeetups.data?.servings}`} />
+								<ListItemText
+									primary={`Servings: ${loadedMeetups.data?.servings}`}
+								/>
 							</ListItem>
 							<ListItem>
 								<ListItemText
@@ -71,7 +67,9 @@ function Recipe({title, text, type, geo, }) {
 								/>
 							</ListItem>
 							<ListItem>
-								<ListItemText primary={`Cooking time: ${loadedMeetups.data?.cookTime}`} />
+								<ListItemText
+									primary={`Cooking time: ${loadedMeetups.data?.cookTime}`}
+								/>
 							</ListItem>
 						</Box>
 					</List>

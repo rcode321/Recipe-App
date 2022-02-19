@@ -34,16 +34,17 @@ function MeetupItem(props) {
 		<Grid>
 			<CardRecipeComponent>
 				<Box className={classes.image}>
-					<img src={props.images?.full} alt={props.title} />
+					<img src={props.images?.full || props.images} alt={props.title} />
 				</Box>
 				<CardContent className={classes.content}>
 					<Typography sx={{ pb: 0.5 }}>{props.title}</Typography>
 					<Divider />
 				</CardContent>
 				<CardActions style={{ display: "flex", justifyContent: "center" }}>
-					<Button             
-						onMouseDown={event => event.stopPropagation()}
-						onClick={toggleFavoriteStatusHandler}>
+					<Button
+						onMouseDown={(event) => event.stopPropagation()}
+						onClick={toggleFavoriteStatusHandler}
+					>
 						{itemIsFavorite ? "Remove from favorites" : "To Favorites"}
 					</Button>
 				</CardActions>
