@@ -54,7 +54,10 @@ function Recipe({ title, text, type, geo }) {
 					cookTime={loadedMeetups.recipe?.cookTime}
 					postDate={loadedMeetups.recipe?.postDate}
 					editDate={loadedMeetups.recipe?.editDate}
+					description={loadedMeetups.recipe?.description}
 					images={loadedMeetups.recipe.images?.full}
+					title={loadedMeetups.recipe?.title}
+					geo={specials?.geo}
 				/>
 			</CardComponent>
 			<Box>
@@ -63,6 +66,7 @@ function Recipe({ title, text, type, geo }) {
 					title={specials?.title}
 					text={specials?.text}
 					code={specials?.code}
+					geo={specials?.geo}
 				/>
 			</Box>
 		</>

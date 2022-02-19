@@ -3,13 +3,13 @@ import { Grid, Typography } from "@mui/material";
 
 const CardSpecials = (props) => {
 	return (
-		<Grid m={2}>
+		<Grid m={1}>
 			<Card
 				sx={{
 					width: 600,
 				}}
 			>
-				<Typography variant="h1" component="div" gutterBottom>
+				<Typography mb={0} p={1} variant="h2" component="div" gutterBottom>
 					Specials
 				</Typography>
 				{props.children}

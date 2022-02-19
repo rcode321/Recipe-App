@@ -15,7 +15,7 @@ function Specials(props) {
 					<img src={props.images.medium} alt={props.title} />
 				</Box> */}
 				<CardContent className={classes.content}>
-					<Typography>{props.type}</Typography>
+					<Typography variant="h4">{props.type}</Typography>
 					<Typography>{props.title}</Typography>
 					<Typography>{props.text}</Typography>
 					{isHavePromo ? `PROMO CODE ${props.code}` : ""}

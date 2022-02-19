@@ -1,82 +1,62 @@
-import { Box, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+// import { Box, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 import CardComponent from "../ui/CardComponent";
 import classes from "./RecipeStyles.module.css";
 
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import * as React from 'react';
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Divider } from "@mui/material";
 
 function RecipeList(props) {
-	function createData(name, calories, fat, carbs, protein) {
-		return { name, calories, fat, carbs, protein };
-	}
-
-	const rows = [
-		createData(
-			`${props.prepTime}`,
-			`${props.servings}`,
-			`${props.postDate}`,
-			`${props.editDate}`
-		),
-	];
-
+	console.log(props.geo)
+	const bull = (
+		<Box
+			component="span"
+			sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+		>
+			•
+		</Box>
+	);
 	return (
-		<TableContainer component={Paper}>
-			<Table sx={{ minWidth: 550 }} aria-label="simple table">
-				<TableHead>
-					<TableRow>
-						<TableCell align="right">PrepTime</TableCell>
-						<TableCell align="right">Servings</TableCell>
-						<TableCell align="right">PostDate</TableCell>
-						<TableCell align="right">EditDate</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{rows.map((row) => (
-						<TableRow
-							key={row.name}
-							sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-						>
-							<TableCell component="th" scope="row">
-								{row.name}
-							</TableCell>
-							<TableCell align="right">{row.calories}</TableCell>
-							<TableCell align="right">{row.fat}</TableCell>
-							<TableCell align="right">{row.carbs}</TableCell>
-							<TableCell align="right">{row.protein}</TableCell>
-						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</TableContainer>
-		// <Grid>
-		// 	<Box>
-		// 		<Box className={classes.image}>
-		// 			<img src={props.images} alt={props.title} />
-		// 		</Box>
-		// 		<Typography>{props.description}</Typography>
-		// 		<nav aria-label="secondary mailbox folders">
-		// 			<List>
-		// 				<Box disablePadding>
-		// 					<ListItem>
-		// 						<ListItemText primary={`Servings: ${props.servings}`} />
-		// 					</ListItem>
-		// 					<ListItem>
-		// 						<ListItemText primary={`Preperation time: ${props.prepTime}`} />
-		// 					</ListItem>
-		// 					<ListItem>
-		// 						<ListItemText primary={`Cooking time: ${props.cookTime}`} />
-		// 					</ListItem>
-		// 				</Box>
-		// 			</List>
-		// 		</nav>
-		// 	</Box>
-		// </Grid>
+		<Card sx={{ minWidth: 275 }}>
+				<Box className={classes.image}>
+					<img src={props?.images} alt={props.title} />
+				</Box>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          {props.description}
+        </Typography>
+        <Typography variant="h5" component="div" mb={2}>
+          {props.title}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.primary">
+          {`Servings: ${props.servings}`}
+        </Typography>
+				<Typography sx={{ mb: 1.5 }} color="text.primary">
+				{`PrepTime: ${props.prepTime}`}
+			</Typography>
+			<Typography sx={{ mb: 1.5 }} color="text.primary">
+			{`CookTime: ${props.cookTime}`}
+		</Typography>
+		<Divider />
+        <Typography variant="body2" mt={2}>
+					{`Post Date: ${props.postDate}`}
+          <br />
+          {`Edit Date: ${props.editDate}`}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button target="_blank" 
+				href={`https://www.google.com/maps/search/${props.geo}`} 
+				size="small">Check Available Location
+				</Button>
+      </CardActions>
+    </Card>
 	);
 }
 
