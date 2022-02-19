@@ -6,9 +6,6 @@ import { useContext } from "react";
 import { Box, Button, CardActions, CardContent, Divider, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-// import { typography } from "@mui/system";
-// import { Link } from "react-router-dom";
-
 function MeetupItem(props) {
 	const favoritesCtx = useContext(FavoritesContext);
 

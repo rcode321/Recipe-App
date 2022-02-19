@@ -1,50 +1,33 @@
-// import { Grid, List } from "@mui/material";
-// import RecipeItem from "./RecipeItem";
-// import classes from "./MeetupList.module.css";
+import { Box, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+import CardComponent from "../ui/CardComponent";
+import classes from "./RecipeStyles.module.css";
 
-// function RecipeList(props) {
-// 	return (
-// 		<Grid container>
-// 			{props.recipes.map((meetup) => (
-// 				<Grid item xs={12} md={6}>
-// 					<RecipeItem
-// 						key={meetup.id}
-// 						id={meetup.id}
-// 						images={meetup.images}
-// 						title={meetup.title}
-// 						address={meetup.address}
-// 						description={meetup.description}
-// 					/>
-// 				</Grid>
-// 			))}
-// 		</Grid>
-// 	);
-// }
+function RecipeList(props) {
+	return (
+		<Grid>
+			<Box>
+				<Box className={classes.image}>
+					<img src={props.images} alt={props.title} />
+				</Box>
+				<Typography>{props.description}</Typography>
+				<nav aria-label="secondary mailbox folders">
+					<List>
+						<Box disablePadding>
+							<ListItem>
+								<ListItemText primary={`Servings: ${props.servings}`} />
+							</ListItem>
+							<ListItem>
+								<ListItemText primary={`Preperation time: ${props.prepTime}`} />
+							</ListItem>
+							<ListItem>
+								<ListItemText primary={`Cooking time: ${props.cookTime}`} />
+							</ListItem>
+						</Box>
+					</List>
+				</nav>
+			</Box>
+		</Grid>
+	);
+}
 
-// export default RecipeList;
-
-
-// import { Grid, List } from "@mui/material";
-// import RecipeItem from "./RecipeItem";
-// import classes from "./MeetupList.module.css";
-
-// function RecipeList(props) {
-// 	return (
-// 		<Grid container>
-// 			{props.specials.map((meetup) => (
-// 				<Grid item xs={12} md={6}>
-// 					<RecipeItem
-// 						key={meetup.id}
-// 						id={meetup.id}
-// 						images={meetup.images}
-// 						title={meetup.title}
-// 						address={meetup.address}
-// 						description={meetup.description}
-// 					/>
-// 				</Grid>
-// 			))}
-// 		</Grid>
-// 	);
-// }
-
-// export default RecipeList;
+export default RecipeList;

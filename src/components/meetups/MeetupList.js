@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material";
 import MeetupItem from "./MeetupItem";
 import classes from "./MeetupList.module.css";
-// import CardRecipeComponent from "./../ui/CardRecipeComponent";
 import { Link } from "react-router-dom";
 
 function MeetupList(props) {
