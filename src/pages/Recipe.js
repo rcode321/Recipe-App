@@ -17,7 +17,7 @@ import axios from "axios";
 import Specials from "../components/meetups/Specials";
 import RecipeList from "../components/meetups/RecipeList";
 
-function Recipe({ title, text, type, geo }) {
+function Recipe({ title, text, type, geo, props }) {
 	const { id } = useParams();
 	const [loadedMeetups, setLoadedMeetups] = useState({ recipe: [], special: [] });
 	const [specials, setSpecials] = useState(null);
@@ -58,6 +58,8 @@ function Recipe({ title, text, type, geo }) {
 					images={loadedMeetups.recipe.images?.full}
 					title={loadedMeetups.recipe?.title}
 					geo={specials?.geo}
+					directions={loadedMeetups.recipe?.directions}
+					ingredients={loadedMeetups.recipe?.ingredients}
 				/>
 			</CardComponent>
 			<Box>

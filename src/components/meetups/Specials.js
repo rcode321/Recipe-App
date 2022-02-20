@@ -1,7 +1,7 @@
 import CardComponent from "../ui/CardComponent";
 import classes from "./NewMeetupForm.module.css";
 import Typography from "@mui/material/Typography";
-import { CardContent, Grid } from "@mui/material";
+import { Button, CardContent, Grid } from "@mui/material";
 import CardSpecials from "../ui/CardSpecials";
 // import { Box } from "@mui/system";
 
@@ -19,6 +19,13 @@ function Specials(props) {
 					<Typography>{props.title}</Typography>
 					<Typography>{props.text}</Typography>
 					{isHavePromo ? `PROMO CODE ${props.code}` : ""}
+					<Button
+						target="_blank"
+						href={`https://www.google.com/maps/search/${props.geo}`}
+						size="small"
+					>
+						Check Available Location
+					</Button>
 				</CardContent>
 			</CardSpecials>
 		</Grid>
