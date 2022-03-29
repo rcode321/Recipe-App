@@ -1,107 +1,74 @@
-// import { Box, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
-import CardComponent from "../ui/CardComponent";
 import classes from "./RecipeStyles.module.css";
 
-// import * as React from "react";
-// import Box from "@mui/material/Box";
-// import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
-// import CardContent from "@mui/material/CardContent";
-// import Button from "@mui/material/Button";
-// import Typography from "@mui/material/Typography";
-// import { Divider, IconButton } from "@mui/material";
-// import { useState } from "react";
-// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-// import ExpandMore from "@mui/icons-material/ExpandMore";
-// import Collapse from "@mui/material/Collapse";
-// import { styled } from "@mui/material/styles";
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
-
-function createData(name, calories, fat, carbs, protein) {
-	return { name, calories, fat, carbs, protein };
-}
+import {
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	Typography,
+} from "@mui/material";
+import CircleIcon from "@mui/icons-material/Circle";
+import InboxIcon from "@mui/icons-material/Inbox";
+import DraftsIcon from "@mui/icons-material/Drafts";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function RecipeList(props) {
-	const rows = [
-		createData(
-			"Frozen yoghurt",
-			`${props.servings} person`,
-			`${props.prepTime} minutes`,
-			`${props.cookTime} minutes`
-		),
-		createData("Ingredients", `${props.ingredients?.amount}`, 9.0, 37),
-		// createData("Eclair", 262, 16.0, 24, 6.0),
-		// createData("Cupcake", 305, 3.7, 67, 4.3),
-		// createData("Gingerbread", 356, 16.0, 49, 3.9),
-	];
-	// const ExpandMore = styled((props) => {
-	// 	const { expand, ...other } = props;
-	// 	return <IconButton {...other} />;
-	// })(({ theme, expand }) => ({
-	// 	transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-	// 	marginLeft: "auto",
-	// 	transition: theme.transitions.create("transform", {
-	// 		duration: theme.transitions.duration.shortest,
-	// 	}),
-	// }));
-	// const [expanded, setExpanded] = useState(false);
+	// const [loadedMeetups2, setLoadedMeetups2] = useState({ recipe: [] });
 
-	// const handleExpandClick = () => {
-	// 	setExpanded(!expanded);
-	// };
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 		const fetchRecipes = await axios(`http://localhost:3001/recipes/`);
+	// 		setLoadedMeetups2({ recipe: fetchRecipes.data });
 
-	// console.log(props.geo);
-	// console.log(props.directions);
-
-	// const bull = (
-	// 	<Box
-	// 		component="span"
-	// 		sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-	// 	></Box>
-	// );
+	// 		console.log(fetchRecipes);
+	// 	};
+	// 	fetchData();
+	// }, []);
 
 	return (
-		<TableContainer component={Paper}>
-			<Box className={classes.image}>
-				<img src={props?.images} alt={props.title} />
+		<Box display={"flex"}>
+			<Box className={classes.container}>
+				<Box className={classes.image}>
+					<img src={props?.images} alt={props.title} />
+				</Box>
 			</Box>
-			<Table sx={{ minWidth: 550 }} aria-label="simple table">
-				<TableHead>
-					<TableRow>
-						<TableCell>Dessert</TableCell>
-						<TableCell align="right">Servings</TableCell>
-						<TableCell align="right">Prep Time&nbsp;(g)</TableCell>
-						<TableCell align="right">Cook Time&nbsp;(g)</TableCell>
-						{/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{rows.map((row) => (
-						<TableRow
-							key={row.name}
-							sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-						>
-							<TableCell component="th" scope="row">
-								{row.name}
-							</TableCell>
-							<TableCell align="right">{row.calories}</TableCell>
-							<TableCell align="right">{row.fat}</TableCell>
-							<TableCell align="right">{row.carbs}</TableCell>
-							<TableCell align="right">{row.protein}</TableCell>
-						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</TableContainer>
+			<Box>
+				<List>
+					<ListItem disablePadding>
+						<ListItemIcon sx={{ minWidth: "30px" }}>
+							<CircleIcon fontSize="small" />
+						</ListItemIcon>
+						<ListItemText primary={`Servings: ${props.servings}`} />
+					</ListItem>
+					<ListItem disablePadding>
+						<ListItemIcon sx={{ minWidth: "30px" }}>
+							<CircleIcon fontSize="small" />
+						</ListItemIcon>
+						<ListItemText primary={`PrepTime: ${props.prepTime}`} />
+					</ListItem>
+					<ListItem disablePadding>
+						<ListItemIcon sx={{ minWidth: "30px" }}>
+							<CircleIcon fontSize="small" />
+						</ListItemIcon>
+						<ListItemText primary={`CookTime: ${props.cookTime}`} />
+					</ListItem>
+					{/* {props.directions.map((direct) => (
+						<li>{direct?.directions}</li>
+					))} */}
+					{/* {props?.recipe?.directions?.map((direct) => (
+						<li>{direct?.directions}</li>
+					))} */}
+					{props.directions}
+					{/* {props?.directions[{ ...props }]?.instructions} */}
+					sdsss
+				</List>
+				{props.ingredients}
+			</Box>
+			{/* <Typography> {`Servings: ${props.servings}`}</Typography> */}
+		</Box>
+
 		// <Card sx={{ minWidth: 275 }}>
 		// 	<Box className={classes.image}>
 		// 		<img src={props?.images} alt={props.title} />

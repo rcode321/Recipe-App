@@ -4,11 +4,11 @@ import classes from "./MeetupList.module.css";
 import { Link } from "react-router-dom";
 
 function MeetupList(props) {
-	console.log(props.recipes, "recipes");
+	// console.log(props.recipes, "recipes");
 	return (
 		<Grid container>
 			{props.recipes.map((meetup) => (
-				<Grid item xs={12} md={6} key={meetup?.id}>
+				<Grid item xs={12} md={4} pr={2} key={meetup?.id}>
 					<Link className={classes.link} to={`/recipes/${meetup.uuid}`}>
 						<MeetupItem
 							key={meetup.id}
