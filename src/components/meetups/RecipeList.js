@@ -2,124 +2,82 @@ import classes from "./RecipeStyles.module.css";
 
 import { Box } from "@mui/system";
 import {
+	Divider,
 	List,
 	ListItem,
 	ListItemIcon,
 	ListItemText,
+	Paper,
 	Typography,
 } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
-function RecipeList(props) {
-	// const [loadedMeetups2, setLoadedMeetups2] = useState({ recipe: [] });
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
+import FolderIcon from "@mui/icons-material/Folder";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		const fetchRecipes = await axios(`http://localhost:3001/recipes/`);
-	// 		setLoadedMeetups2({ recipe: fetchRecipes.data });
+const RecipeList = ({
+	directions,
+	ingredients,
+	title,
+	servings,
+	prepTime,
+	cookTime,
+	description,
+	editDate,
+	images,
+	data,
+}) => {
+	function generate(element) {
+		return [0].map((value) =>
+			React.cloneElement(element, {
+				key: value,
+			})
+		);
+	}
+	const Demo = styled("div")(({ theme }) => ({
+		backgroundColor: theme.palette.background.paper,
+	}));
 
-	// 		console.log(fetchRecipes);
-	// 	};
-	// 	fetchData();
-	// }, []);
+	const [dense, setDense] = React.useState(false);
+	const [secondary, setSecondary] = React.useState(false);
+	// const [name, amount] = ingredients;
 
 	return (
 		<Box display={"flex"}>
 			<Box className={classes.container}>
+				<Typography variant="h3"> {description}</Typography>
 				<Box className={classes.image}>
-					<img src={props?.images} alt={props.title} />
+					<img src={images} alt={title} />
 				</Box>
 			</Box>
-			<Box>
-				<List>
-					<ListItem disablePadding>
-						<ListItemIcon sx={{ minWidth: "30px" }}>
-							<CircleIcon fontSize="small" />
-						</ListItemIcon>
-						<ListItemText primary={`Servings: ${props.servings}`} />
-					</ListItem>
-					<ListItem disablePadding>
-						<ListItemIcon sx={{ minWidth: "30px" }}>
-							<CircleIcon fontSize="small" />
-						</ListItemIcon>
-						<ListItemText primary={`PrepTime: ${props.prepTime}`} />
-					</ListItem>
-					<ListItem disablePadding>
-						<ListItemIcon sx={{ minWidth: "30px" }}>
-							<CircleIcon fontSize="small" />
-						</ListItemIcon>
-						<ListItemText primary={`CookTime: ${props.cookTime}`} />
-					</ListItem>
-					{/* {props.directions.map((direct) => (
-						<li>{direct?.directions}</li>
-					))} */}
-					{/* {props?.recipe?.directions?.map((direct) => (
-						<li>{direct?.directions}</li>
-					))} */}
-					{props.directions}
-					{/* {props?.directions[{ ...props }]?.instructions} */}
-					sdsss
-				</List>
-				{props.ingredients}
-			</Box>
-			{/* <Typography> {`Servings: ${props.servings}`}</Typography> */}
+			<Paper>
+				<Demo>
+					<List>
+						{generate(
+							<ListItem>
+								<ListItemIcon>
+									<FolderIcon />
+								</ListItemIcon>
+								<ListItemText
+									primary={ingredients?.name}
+									secondary={secondary ? "Secondary text" : null}
+								/>
+							</ListItem>
+						)}
+					</List>
+				</Demo>
+			</Paper>
 		</Box>
-
-		// <Card sx={{ minWidth: 275 }}>
-		// 	<Box className={classes.image}>
-		// 		<img src={props?.images} alt={props.title} />
-		// 	</Box>
-		// 	<CardContent>
-		// 		<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-		// 			{props.description}
-		// 		</Typography>
-		// 		<Typography variant="h5" component="div" mb={2}>
-		// 			{props.title}
-		// 		</Typography>
-		// 		<Typography sx={{ mb: 1.5 }} color="text.primary">
-		// 			{`Servings: ${props.servings}`}
-		// 		</Typography>
-		// 		<Typography sx={{ mb: 1.5 }} color="text.primary">
-		// 			{`PrepTime: ${props.prepTime}`}
-		// 		</Typography>
-		// 		<Typography sx={{ mb: 1.5 }} color="text.primary">
-		// 			{`CookTime: ${props.cookTime}`}
-		// 		</Typography>
-		// 		<Divider />
-		// 		<Box sx={{ display: "flex" }}>
-		// 			<Typography>Directions</Typography>
-		// 			<ExpandMore
-		// 				expand={expanded}
-		// 				onClick={handleExpandClick}
-		// 				aria-expanded={expanded}
-		// 				aria-label="show more"
-		// 			>
-		// 				<ExpandMoreIcon />
-		// 			</ExpandMore>
-		// 		</Box>
-		// 		<Collapse in={expanded} timeout="auto" unmountOnExit>
-		// 			<CardContent>
-		// 				<Typography paragraph>Method:</Typography>
-		// 				<Typography paragraph>
-		// 					{props.directions?.map((direction) => (
-		// 						<Typography>{direction.instructions}</Typography>
-		// 					))}
-		// 				</Typography>
-		// 				<Typography></Typography>
-		// 			</CardContent>
-		// 		</Collapse>
-		// 		<Typography variant="body2" mt={2}>
-		// 			{`Post Date: ${props.postDate}`}
-		// 			<br />
-		// 			{`Edit Date: ${props.editDate}`}
-		// 		</Typography>
-		// 	</CardContent>
-		// </Card>
 	);
-}
+};
 
 export default RecipeList;

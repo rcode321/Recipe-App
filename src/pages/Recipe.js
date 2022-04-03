@@ -34,20 +34,16 @@ function Recipe(props) {
 		fetchData();
 	}, [id]);
 
-	// const [loadedMeetups2, setLoadedMeetups2] = useState({ recipe2: [] });
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		const fetchRecipes2 = await axios(`http://localhost:3001/recipes/`);
-	// 		setLoadedMeetups2({ ...loadedMeetups2 });
-	// 		console.log(fetchRecipes2, "fetchRecipes");
-	// 		fetchRecipes2?.data?.map((el) => <li>{el?.data?.directions}</li>);
-	// 		console.log(fetchRecipes2, "mapping");
-	// 		// console.log(typeof fetchRecipes2);
-	// 		console.log(Array.isArray(fetchRecipes2));
-	// 	};
-	// 	fetchData();
-	// }, []);
+	const direction = loadedMeetups?.recipe?.directions?.map((dir) => (
+		<Typography key={dir.instructions}>{dir.instructions}</Typography>
+	));
 
+	const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => (
+		<Typography>{keys}</Typography>
+	));
+
+	// const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => keys);
+	// console.log(ingredient, "sdsdsdsdsd");
 	return (
 		<>
 			<Box mt={20}>
@@ -58,17 +54,11 @@ function Recipe(props) {
 						cookTime={loadedMeetups.recipe?.cookTime}
 						postDate={loadedMeetups.recipe?.postDate}
 						editDate={loadedMeetups.recipe?.editDate}
-						// description={loadedMeetups.recipe?.description}
+						description={loadedMeetups.recipe.description}
 						images={loadedMeetups.recipe.images?.full}
 						title={loadedMeetups.recipe?.title}
-						directions={loadedMeetups?.recipe?.directions?.map((dir) => (
-							<li>{dir?.instructions}</li>
-						))}
-						ingredients={loadedMeetups?.recipe?.ingredients?.map((ingredients) => (
-							<>
-								<li>{ingredients?.measurement}</li>
-							</>
-						))}
+						directions={direction}
+						ingredients={[...ingredient]}
 						geo={specials?.geo}
 					/>
 				</Box>
