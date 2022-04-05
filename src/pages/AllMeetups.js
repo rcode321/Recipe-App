@@ -2,6 +2,8 @@ import MeetupList from "../components/meetups/MeetupList";
 
 import { useState, useEffect } from "react";
 import { Box } from "@mui/system";
+import Hero from '../components/ui/Hero'
+
 
 function AllMeetupsPage() {
 	const [isLoading, setIsLoading] = useState(true);
@@ -38,8 +40,9 @@ function AllMeetupsPage() {
 	}
 
 	return (
-		<Box sx={{ mt: 15 }}>
-			<h1>All Recipe</h1>
+		<Box>
+			<Hero />
+			{/*<h1>All Recipe</h1>*/}
 			<MeetupList recipes={loadedMeetups} />
 		</Box>
 	);

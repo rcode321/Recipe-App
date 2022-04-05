@@ -7,9 +7,9 @@ import { Grid } from "@mui/material";
 
 const CardRecipeComponent = (props) => {
 	return (
-		<Grid p={3}>
+		<Grid>
 			{/* <Link to={`/recipes/${uuid}`}> */}
-			<Card sx={{ maxWidth: 345 }}>
+			<Card sx={{ maxWidth: 345, mx: 'auto', }} >
 				<CardMedia
 					component="img"
 					height="120"

@@ -7,7 +7,7 @@ import { Grid } from "@mui/material";
 
 const CardComponent = (props) => {
 	return (
-		<Grid m={2}>
+	
 			<Card
 				sx={{
 					width: 600,
@@ -15,14 +15,14 @@ const CardComponent = (props) => {
 				}}
 			>
 				<CardMedia
-					component="img"
-					height="120"
-					image="/img/Recipe_Unlimited_logo.png"
-					alt="green iguana"
+					// component="img"
+					// height="120"
+					// image=""
+					// alt=""
 				/>
 				{props.children}
 			</Card>
-		</Grid>
+		
 	);
 };
 

@@ -9,9 +9,9 @@ import Layout from "./components/layout/Layout";
 function App() {
 	return (
 		<Layout className="App">
-			<Switch>
-				<Route path="/" exact>
-					<AllMeetupsPage />
+		<Switch>
+		<Route path="/" exact>
+		<AllMeetupsPage />
 				</Route>
 				<Route path="/new-meetup">
 					<NewMeetupPage />
