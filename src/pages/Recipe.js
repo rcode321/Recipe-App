@@ -1,27 +1,16 @@
-import {
-	dividerClasses,
-	Grid,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-	Paper,
-} from "@mui/material";
 import { Box } from "@mui/system";
 import classes from "./RecipeStyles.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CardComponent from "./../components/ui/CardComponent";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import Specials from "../components/meetups/Specials";
 import RecipeList from "../components/meetups/RecipeList";
 
-function Recipe({ title, text, type, geo, props }) {
+function Recipe(props) {
 	const { id } = useParams();
 	const [loadedMeetups, setLoadedMeetups] = useState({ recipe: [], special: [] });
 	const [specials, setSpecials] = useState(null);
-
 	useEffect(() => {
 		const fetchData = async () => {
 			const fetchRecipes = await axios(`http://localhost:3001/recipes/${id}`);
@@ -39,30 +28,41 @@ function Recipe({ title, text, type, geo, props }) {
 					});
 				}
 			});
-			// console.log(respGlobal, respRepos, "datauus");
+			console.log(fetchRecipes, "fetchRecipes", fetchSpecials, "fetchSpecials");
+			console.log(typeof fetchRecipes);
 		};
 		fetchData();
 	}, [id]);
 
-	console.log(specials, "specials");
+	const direction = loadedMeetups?.recipe?.directions?.map((dir) => (
+		<Typography key={dir.instructions}>{dir.instructions}</Typography>
+	));
+
+	const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => (
+		<Typography>{keys}</Typography>
+	));
+
+	// const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => keys);
+	// console.log(ingredient, "sdsdsdsdsd");
 	return (
 		<>
-			<CardComponent>
-				<RecipeList
-					servings={loadedMeetups.recipe?.servings}
-					prepTime={loadedMeetups.recipe?.prepTime}
-					cookTime={loadedMeetups.recipe?.cookTime}
-					postDate={loadedMeetups.recipe?.postDate}
-					editDate={loadedMeetups.recipe?.editDate}
-					description={loadedMeetups.recipe?.description}
-					images={loadedMeetups.recipe.images?.full}
-					title={loadedMeetups.recipe?.title}
-					geo={specials?.geo}
-					directions={loadedMeetups.recipe?.directions}
-					ingredients={loadedMeetups.recipe?.ingredients}
-				/>
-			</CardComponent>
-			<Box>
+			<Box mt={20}>
+				<Box>
+					<RecipeList
+						servings={loadedMeetups.recipe?.servings}
+						prepTime={loadedMeetups.recipe?.prepTime}
+						cookTime={loadedMeetups.recipe?.cookTime}
+						postDate={loadedMeetups.recipe?.postDate}
+						editDate={loadedMeetups.recipe?.editDate}
+						description={loadedMeetups.recipe.description}
+						images={loadedMeetups.recipe.images?.full}
+						title={loadedMeetups.recipe?.title}
+						directions={direction}
+						ingredients={[...ingredient]}
+						geo={specials?.geo}
+					/>
+				</Box>
+
 				<Specials
 					type={specials?.type}
 					title={specials?.title}
@@ -72,39 +72,6 @@ function Recipe({ title, text, type, geo, props }) {
 				/>
 			</Box>
 		</>
-
-		// <Grid className={classes.container}>
-		// 	<CardComponent>
-		// 		<Box className={classes.image}>
-		// 			<img src={loadedMeetups.recipe?.images?.full} alt={title} />
-		// 		</Box>
-		// 		<p>{loadedMeetups.recipe.title}</p>
-		// 		{/* <h2>{`SPECIALS: ${specials?.title ? specials.title : "None"}`}</h2> */}
-
-		// 		<Typography>{loadedMeetups.description}</Typography>
-		// 		<nav aria-label="secondary mailbox folders">
-		// 			<List>
-		// 				<Box disablePadding>
-		// 					<ListItem>
-		// 						<ListItemText
-		// 							primary={`Servings: ${loadedMeetups.recipe?.servings}`}
-		// 						/>
-		// 					</ListItem>
-		// 					<ListItem>
-		// 						<ListItemText
-		// 							primary={`Preperation time: ${loadedMeetups.recipe?.prepTime}`}
-		// 						/>
-		// 					</ListItem>
-		// 					<ListItem>
-		// 						<ListItemText
-		// 							primary={`Cooking time: ${loadedMeetups.recipe?.cookTime}`}
-		// 						/>
-		// 					</ListItem>
-		// 				</Box>
-		// 			</List>
-		// 		</nav>
-		// 	</CardComponent>
-		// </Grid>
 	);
 }
 

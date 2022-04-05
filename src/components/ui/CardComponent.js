@@ -2,18 +2,23 @@
 
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import { Grid } from "@mui/material";
+import { Box } from "@mui/system";
 // import { Link } from "react-router-dom";
 
 const CardComponent = (props) => {
 	return (
+<<<<<<< HEAD
 	
+=======
+		<Box>
+>>>>>>> e1405c9ffa3be8d3b61cd8357b4aa78ab0a352ba
 			<Card
 				sx={{
 					width: 600,
 					marginTop: 20,
 				}}
 			>
+<<<<<<< HEAD
 				<CardMedia
 					// component="img"
 					// height="120"
@@ -23,6 +28,11 @@ const CardComponent = (props) => {
 				{props.children}
 			</Card>
 		
+=======
+				{props.children}
+			</Card>
+		</Box>
+>>>>>>> e1405c9ffa3be8d3b61cd8357b4aa78ab0a352ba
 	);
 };
 

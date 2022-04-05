@@ -6,7 +6,7 @@ function NewMeetupPage() {
 	const history = useHistory();
 
 	const addMeetuphandler = (meetupData) => {
-		console.log(meetupData);
+		// console.log(meetupData);
 		fetch("http://localhost:3001/recipes", {
 			method: "POST",
 			body: JSON.stringify(meetupData),

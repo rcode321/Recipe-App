@@ -1,5 +1,10 @@
 .main {
 	margin: 3rem auto;
+<<<<<<< HEAD
 	width: 100%;
 	/* max-width: 40rem; */
+=======
+	width: 90%;
+	max-width: 50rem;
+>>>>>>> e1405c9ffa3be8d3b61cd8357b4aa78ab0a352ba
 }

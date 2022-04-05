@@ -12,14 +12,14 @@ export const FavoritesContextProvider = (props) => {
 	const [userFavorites, setUserFavorites] = useState([]);
 
 	const addFavoriteHandler = (favoriteMeetup) => {
-		console.log(favoriteMeetup);
+		// console.log(favoriteMeetup);
 		setUserFavorites((prevUserFavorites) => {
 			return prevUserFavorites.concat(favoriteMeetup);
 		});
 	};
 
 	const removeFavoriteHandler = (meetupId) => {
-		console.log(meetupId);
+		// console.log(meetupId);
 		setUserFavorites((prevUserFavorites) => {
 			return prevUserFavorites.filter((meetup) => meetup.id !== meetupId);
 		});
