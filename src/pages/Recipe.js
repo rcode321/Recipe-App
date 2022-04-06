@@ -1,4 +1,6 @@
 import { Box } from "@mui/system";
+import Divider from '@mui/material/Divider';
+
 import classes from "./RecipeStyles.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -6,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import Specials from "../components/meetups/Specials";
 import RecipeList from "../components/meetups/RecipeList";
+import { ListItem } from "@mui/material";
 
 function Recipe(props) {
 	const { id } = useParams();
@@ -39,14 +42,29 @@ function Recipe(props) {
 	));
 
 	const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => (
-		<Typography>{keys}</Typography>
+		<Box >
+		<ListItem>
+				name : 
+			{keys.name}
+		</ListItem>
+		<ListItem>
+			amount: {keys.amount}
+		</ListItem>
+		<ListItem>
+			measurement: 	
+			{keys.measurement}
+		</ListItem>
+		<Divider/>
+		</Box>
+		
 	));
+	
 
 	// const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => keys);
 	// console.log(ingredient, "sdsdsdsdsd");
 	return (
 		<>
-			<Box mt={20}>
+			<Box mt={20} display="flex">
 				<Box>
 					<RecipeList
 						servings={loadedMeetups.recipe?.servings}
@@ -58,11 +76,10 @@ function Recipe(props) {
 						images={loadedMeetups.recipe.images?.full}
 						title={loadedMeetups.recipe?.title}
 						directions={direction}
-						ingredients={[...ingredient]}
+						ingredients={ingredient}
 						geo={specials?.geo}
 					/>
 				</Box>
-
 				<Specials
 					type={specials?.type}
 					title={specials?.title}
@@ -70,6 +87,7 @@ function Recipe(props) {
 					code={specials?.code}
 					geo={specials?.geo}
 				/>
+
 			</Box>
 		</>
 	);

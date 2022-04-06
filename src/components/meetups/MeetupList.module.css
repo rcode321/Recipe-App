@@ -3,13 +3,8 @@
 	margin: 0;
 	padding: 20;
 	display: grid;
-<<<<<<< HEAD
-	grid-template-columns: repeat(3, 1fr);
-	
-=======
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 10px;
->>>>>>> e1405c9ffa3be8d3b61cd8357b4aa78ab0a352ba
 }
 
 .link {

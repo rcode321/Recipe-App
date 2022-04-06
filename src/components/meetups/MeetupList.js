@@ -8,11 +8,7 @@ function MeetupList(props) {
 	return (
 		<Grid container>
 			{props.recipes.map((meetup) => (
-<<<<<<< HEAD
-				<Grid item xs={12} md={4} key={meetup?.id}>
-=======
 				<Grid item xs={12} md={4} pr={2} key={meetup?.id}>
->>>>>>> e1405c9ffa3be8d3b61cd8357b4aa78ab0a352ba
 					<Link className={classes.link} to={`/recipes/${meetup.uuid}`}>
 						<MeetupItem
 							key={meetup.id}
