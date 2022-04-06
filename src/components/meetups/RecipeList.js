@@ -1,36 +1,9 @@
 import classes from "./RecipeStyles.module.css";
 
-import { Box } from "@mui/system";
-import {
-	Divider,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	Typography,
-} from "@mui/material";
-import CircleIcon from "@mui/icons-material/Circle";
 import * as React from "react";
-import { styled } from "@mui/material/styles";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Grid from "@mui/material/Grid";
-import FolderIcon from "@mui/icons-material/Folder";
-import DeleteIcon from "@mui/icons-material/Delete";
-
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-
-
+import { Box } from "@mui/system";
+import { Button, CardActions, CardContent, Typography } from "@mui/material";
+import Card from "@mui/material/Card";
 
 const RecipeList = ({
 	directions,
@@ -41,65 +14,50 @@ const RecipeList = ({
 	cookTime,
 	description,
 	editDate,
+	postDate,
 	images,
 	data,
 }) => {
-	
+	const bull = (
+		<Box
+			component="span"
+			sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+		>
+			•
+		</Box>
+	);
 	return (
-		<>
-		
-		<Typography variant="h3"> {description}</Typography>
-		<Box className={classes.image}>
-			<img src={images} alt={title} />
-	 </Box>
+		<Box>
+			<Typography variant="h3"> {title}</Typography>
+			<Box className={classes.image}>
+				<img src={images} alt={title} />
+			</Box>
 
-	 <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">Preparation</TableCell>
-            <TableCell align="right">Servings&nbsp;</TableCell>
-            <TableCell align="right">Cooktime&nbsp;</TableCell>
-            <TableCell align="right">Date&nbsp;</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-       
-            <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {prepTime}
-              </TableCell>
-              <TableCell align="right">{servings}</TableCell>
-							<TableCell align="right">{cookTime}</TableCell>
-							<TableCell align="right">{editDate}</TableCell>
-            </TableRow>
-      
-        </TableBody>
-      </Table>
-    </TableContainer>
-		</>
-		
-		// 	<Box className={classes.container} display="flex">
-		// 		<Paper>
-		// 		<Typography variant="h4" textAlign={'center'}>ingredients</Typography>
-		// 				<ListItem>
-		// 					<ListItemText
-		// 							primary={ingredients}		
-		// 						/>
-		// 				</ListItem>
-		// 		</Paper>
-		// 	<Paper>
-		// 		<Typography variant="h4" textAlign={'center'}>directions</Typography>
-		// 		<ListItem>
-		// 			<ListItemText
-		// 					primary={directions}		
-		// 				/>
-		// 		</ListItem>
-		// 	</Paper>
-		// 	</Box>
+			<Card sx={{ maxWidth: 275 }} className={classes.card}>
+				<CardContent>
+					<Typography variant="h4" color="text.primary" gutterBottom>
+						{description}
+					</Typography>
+					<Typography variant="body1" component="div">
+						{`Cooktime - ${cookTime} min `}
+					</Typography>
+					<Typography variant="body1" component="div">
+						{`Servings - ${servings} Person`}
+					</Typography>
+					<Typography variant="body1" component="div">
+						{`Preptime - ${prepTime} min`}
+					</Typography>
+					<br />
+					<Typography variant="subtitle2" sx={{ mb: 1.5 }} color="text.secondary">
+						{editDate}
+					</Typography>
 
+					<Typography variant="subtitle2" sx={{ mb: 1.5 }} color="text.secondary">
+						{postDate}
+					</Typography>
+				</CardContent>
+			</Card>
+		</Box>
 	);
 };
 

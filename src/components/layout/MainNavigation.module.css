@@ -47,12 +47,12 @@
 
 .links {
 	text-decoration: none;
-	color: aliceblue;
+	color: rgb(23, 24, 24);
 	margin: 2px;
 	justify-content: flex-end;
 }
 
 .navbar {
 	padding: 10px;
-	justify-content: flex-end;
+	justify-content: flex-start;
 }

@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-import Divider from '@mui/material/Divider';
+import Divider from "@mui/material/Divider";
 
 import classes from "./RecipeStyles.module.css";
 import { useEffect, useState } from "react";
@@ -42,54 +42,42 @@ function Recipe(props) {
 	));
 
 	const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => (
-		<Box >
-		<ListItem>
-				name : 
-			{keys.name}
-		</ListItem>
-		<ListItem>
-			amount: {keys.amount}
-		</ListItem>
-		<ListItem>
-			measurement: 	
-			{keys.measurement}
-		</ListItem>
-		<Divider/>
+		<Box>
+			<ListItem>name :{keys.name}</ListItem>
+			<ListItem>amount: {keys.amount}</ListItem>
+			<ListItem>
+				measurement:
+				{keys.measurement}
+			</ListItem>
+			<Divider />
 		</Box>
-		
 	));
-	
 
-	// const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => keys);
-	// console.log(ingredient, "sdsdsdsdsd");
 	return (
-		<>
-			<Box mt={20} display="flex">
-				<Box>
-					<RecipeList
-						servings={loadedMeetups.recipe?.servings}
-						prepTime={loadedMeetups.recipe?.prepTime}
-						cookTime={loadedMeetups.recipe?.cookTime}
-						postDate={loadedMeetups.recipe?.postDate}
-						editDate={loadedMeetups.recipe?.editDate}
-						description={loadedMeetups.recipe.description}
-						images={loadedMeetups.recipe.images?.full}
-						title={loadedMeetups.recipe?.title}
-						directions={direction}
-						ingredients={ingredient}
-						geo={specials?.geo}
-					/>
-				</Box>
-				<Specials
-					type={specials?.type}
-					title={specials?.title}
-					text={specials?.text}
-					code={specials?.code}
+		<Box mt={2}>
+			<Box>
+				<RecipeList
+					servings={loadedMeetups.recipe?.servings}
+					prepTime={loadedMeetups.recipe?.prepTime}
+					cookTime={loadedMeetups.recipe?.cookTime}
+					postDate={loadedMeetups.recipe?.postDate}
+					editDate={loadedMeetups.recipe?.editDate}
+					description={loadedMeetups.recipe.description}
+					images={loadedMeetups.recipe.images?.full}
+					title={loadedMeetups.recipe?.title}
+					directions={direction}
+					ingredients={ingredient}
 					geo={specials?.geo}
 				/>
-
 			</Box>
-		</>
+			<Specials
+				type={specials?.type}
+				title={specials?.title}
+				text={specials?.text}
+				code={specials?.code}
+				geo={specials?.geo}
+			/>
+		</Box>
 	);
 }
 

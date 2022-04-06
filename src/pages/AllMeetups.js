@@ -2,8 +2,8 @@ import MeetupList from "../components/meetups/MeetupList";
 
 import { useState, useEffect } from "react";
 import { Box } from "@mui/system";
-import Hero from '../components/ui/Hero'
-
+import Hero from "../components/ui/Hero";
+import Typography from "@mui/material/Typography";
 
 function AllMeetupsPage() {
 	const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +42,9 @@ function AllMeetupsPage() {
 	return (
 		<Box>
 			<Hero />
-			{/*<h1>All Recipe</h1>*/}
+			<Typography variant="h2" textAlign={"center"} m={8}>
+				Popular Food{" "}
+			</Typography>
 			<MeetupList recipes={loadedMeetups} />
 		</Box>
 	);

@@ -3,7 +3,6 @@ import { useContext } from "react";
 import * as React from "react";
 
 import { styled, alpha } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -13,6 +12,7 @@ import classes from "./MainNavigation.module.css";
 import FavoritesContext from "../../store/favorites-context";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import Badge from "@mui/material/Badge";
+import { Divider } from "@mui/material";
 
 function MainNavigation() {
 	const favoritesCtx = useContext(FavoritesContext);
@@ -59,51 +59,50 @@ function MainNavigation() {
 		},
 	}));
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="fixed" className={classes.navbar}>
-				<Toolbar>
-					<Typography>Recipe App</Typography>
-					<Typography
-						noWrap
-						component="div"
-						sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-					>
-						<Box sx={{ display: "flex" }} className={classes.navbar}>
-							<Typography pr={2}>
-								<NavLink className={classes.links} to="/">
-									All Recipe
-								</NavLink>
-							</Typography>
-							<Typography pr={2}>
-								<NavLink className={classes.links} to="/new-meetup">
-									Add New Recipe
-								</NavLink>
-							</Typography>
-							<Typography>
-								<NavLink className={classes.links} to="/favorites">
-									My Favorites
-									<Badge
-										color="secondary"
-										badgeContent={favoritesCtx.totalFavorites}
-										className={classes.badge}
-									>
-										<NotificationsNoneOutlinedIcon />
-									</Badge>
-								</NavLink>
-							</Typography>
-						</Box>
-					</Typography>
-					<Search>
-						<SearchIconWrapper>
-							<SearchIcon />
-						</SearchIconWrapper>
-						<StyledInputBase
-							placeholder="Search…"
-							inputProps={{ "aria-label": "search" }}
-						/>
-					</Search>
-				</Toolbar>
-			</AppBar>
+		<Box>
+			<Toolbar>
+				<Typography>Recipe App</Typography>
+				<Typography
+					noWrap
+					component="div"
+					sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+				>
+					<Box sx={{ display: "flex" }} className={classes.navbar}>
+						<Typography pr={2}>
+							<NavLink className={classes.links} to="/">
+								All Recipe
+							</NavLink>
+						</Typography>
+						<Typography pr={2}>
+							<NavLink className={classes.links} to="/new-meetup">
+								Add New Recipe
+							</NavLink>
+						</Typography>
+						<Typography>
+							<NavLink className={classes.links} to="/favorites">
+								My Favorites
+								<Badge
+									color="secondary"
+									badgeContent={favoritesCtx.totalFavorites}
+									className={classes.badge}
+								>
+									<NotificationsNoneOutlinedIcon />
+								</Badge>
+							</NavLink>
+						</Typography>
+					</Box>
+				</Typography>
+				<Search>
+					<SearchIconWrapper>
+						<SearchIcon />
+					</SearchIconWrapper>
+					<StyledInputBase
+						placeholder="Search…"
+						inputProps={{ "aria-label": "search" }}
+					/>
+				</Search>
+			</Toolbar>
+			<Divider />
 		</Box>
 	);
 }

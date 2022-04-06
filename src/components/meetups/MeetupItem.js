@@ -3,7 +3,15 @@ import CardRecipeComponent from "../ui/CardRecipeComponent";
 import classes from "./MeetupItem.module.css";
 import FavoritesContext from "../../store/favorites-context";
 import { useContext } from "react";
-import { Box, Button, CardActions, CardContent, Divider, Grid } from "@mui/material";
+import {
+	Box,
+	Button,
+	CardActions,
+	CardContent,
+	Divider,
+	Grid,
+	Paper,
+} from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 function MeetupItem(props) {
@@ -28,11 +36,11 @@ function MeetupItem(props) {
 	};
 
 	return (
-		<Grid>
-			<CardRecipeComponent>
-				<Box className={classes.image}>
+		<CardRecipeComponent>
+			<Grid>
+				<Grid className={classes.image}>
 					<img src={props.images?.full || props.images} alt={props.title} />
-				</Box>
+				</Grid>
 				<CardContent className={classes.content}>
 					<Typography sx={{ pb: 0.5 }}>{props.title}</Typography>
 					<Divider />
@@ -45,8 +53,8 @@ function MeetupItem(props) {
 						{itemIsFavorite ? "Remove from favorites" : "To Favorites"}
 					</Button>
 				</CardActions>
-			</CardRecipeComponent>
-		</Grid>
+			</Grid>
+		</CardRecipeComponent>
 	);
 }
 

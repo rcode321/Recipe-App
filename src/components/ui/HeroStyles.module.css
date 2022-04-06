@@ -1,5 +1,77 @@
-.image {
-  width: 100%;
-  height: 100%;
+/* .image {
+	width: 100%;
+	height: 100%;
+} */
 
+.heroImg {
+	background-image: url(../ui/HeroFoodBanner.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 70vh;
+	width: 100%;
+	position: relative;
+}
+.insideContainer {
+	display: flex;
+	height: 70vh;
+	justify-content: center;
+	align-items: center;
+}
+.heroContent {
+	color: #fff;
+	line-height: 0.4;
+	position: relative;
+	z-index: 2;
+	text-align: center;
+}
+h2 {
+	font-weight: 400;
+	font-size: 3.25rem;
+	letter-spacing: 1px;
+}
+p {
+	font-weight: 400;
+	font-size: 1.25rem;
+	letter-spacing: 1px;
+	margin-bottom: 2.25rem;
+}
+.heroContent a {
+	text-decoration: none;
+	color: #000;
+	font-weight: 400;
+	border: 1px solid transparent;
+	background-color: #cccccc;
+	padding: 15px 25px;
+	font-size: 1rem;
+	margin: 0;
+	display: inline-block;
+	letter-spacing: 1px;
+	text-transform: initial;
+}
+.heroContent a:hover {
+	background-color: #fff;
+}
+.heroImg::after {
+	content: "";
+	background-color: rgba(0, 0, 0, 0.342);
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+}
+li {
+	list-style-type: none;
+}
+.icons {
+	display: flex;
+	color: #fff;
+	font-size: 25px;
+	position: absolute;
+	z-index: 2;
+	color: #cccccc;
+	bottom: 0;
+	padding: 25px 0px;
 }
