@@ -6,16 +6,19 @@
 
 .image {
 	width: 100%;
-	overflow: hidden;
 }
 
 .container {
+	position: relative;
 	width: 100%;
 	padding-right: 100px;
 }
 
-.card {
-	position: relative;
-	top: -300px;
-	background-color: rgba(231, 231, 231, 0.863);
+.cards {
+	position: absolute;
+	background-color: rgba(252, 248, 248, 0.74);
+	top: 60%;
+	left: 2%;
+	width: 300px;
+	border-radius: 20px;
 }
