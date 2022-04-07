@@ -7,6 +7,7 @@ import {
 	ListItem,
 	ListItemAvatar,
 	ListItemText,
+	Paper,
 	Typography,
 } from "@mui/material";
 import OutdoorGrillIcon from "@mui/icons-material/OutdoorGrill";
@@ -24,9 +25,9 @@ const RecipeList = ({
 	editDate,
 	postDate,
 	images,
-	data,
 }) => {
 	return (
+	<Box>
 		<Box className={classes.container}>
 			<Box m={4}>
 				<Typography variant="h3"> {title}</Typography>
@@ -73,6 +74,10 @@ const RecipeList = ({
 				</List>
 			</Box>
 		</Box>
+		<Box className={classes.ingredientsCard}>
+			{ingredients}
+		</Box>
+	</Box>
 	);
 };
 

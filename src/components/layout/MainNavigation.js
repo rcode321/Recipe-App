@@ -59,15 +59,15 @@ function MainNavigation() {
 		},
 	}));
 	return (
-		<Box>
+		<Box className={classes.navbar2}>
 			<Toolbar>
 				<Typography>Recipe App</Typography>
 				<Typography
 					noWrap
 					component="div"
-					sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+					
 				>
-					<Box sx={{ display: "flex" }} className={classes.navbar}>
+					<Box sx={{ display: "flex" }} >
 						<Typography pr={2}>
 							<NavLink className={classes.links} to="/">
 								All Recipe

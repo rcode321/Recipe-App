@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import Specials from "../components/meetups/Specials";
 import RecipeList from "../components/meetups/RecipeList";
-import { ListItem } from "@mui/material";
+import { ListItem, Paper } from "@mui/material";
 
 function Recipe(props) {
 	const { id } = useParams();
@@ -42,14 +42,14 @@ function Recipe(props) {
 	));
 
 	const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => (
-		<Box>
-			<ListItem>name :{keys.name}</ListItem>
-			<ListItem>amount: {keys.amount}</ListItem>
-			<ListItem>
-				measurement:
-				{keys.measurement}
-			</ListItem>
-			<Divider />
+		<Box m={2}>
+			<Paper>
+				<Typography>
+					<ListItem>name :{keys.name}</ListItem>
+					<ListItem>amount: {keys.amount}</ListItem>
+					<ListItem>measurement:{keys.measurement}</ListItem>
+				</Typography>		
+			</Paper>
 		</Box>
 	));
 

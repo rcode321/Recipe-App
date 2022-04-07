@@ -11,7 +11,6 @@
 .container {
 	position: relative;
 	width: 100%;
-	padding-right: 100px;
 }
 
 .cards {
@@ -21,4 +20,9 @@
 	left: 2%;
 	width: 300px;
 	border-radius: 20px;
+}
+
+.ingredientsCard {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 }
