@@ -17,7 +17,7 @@ const CardRecipeComponent = (props) => {
 	return (
 		<Box>
 			<Grid>
-				<Card sx={{ maxWidth: "100%", mx: "auto", height: "40vh" }}>
+				<Card sx={{ maxWidth: "100%", mx: "auto", height: "100%" }}>
 					<CardMedia
 						// component="img"
 						height="120"

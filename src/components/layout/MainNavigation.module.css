@@ -40,7 +40,7 @@
 
 .badge {
 	/* background-color: #cc2062; */
-	color: white;
+	color: rgb(26, 26, 26);
 	border-radius: 12px;
 	margin-left: 0.1rem;
 }
@@ -54,4 +54,5 @@
 
 .navbar {
 	justify-content: flex-start;
+	background-color: rgb(38, 138, 231);
 }

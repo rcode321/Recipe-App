@@ -21,8 +21,25 @@
 	width: 300px;
 	border-radius: 20px;
 }
+.cards2 {
+	position: absolute;
+	background-color: rgba(252, 248, 248, 0.74);
+	top: 60%;
+	left: 62%;
+	width: 300px;
+	border-radius: 20px;
+}
 
 .ingredientsCard {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+}
+
+.ingredients {
+	display: list-item;
+}
+
+ ul li { 
+	display: list-item;
+	list-style-type: disc;
 }

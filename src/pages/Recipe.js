@@ -14,6 +14,7 @@ function Recipe(props) {
 	const { id } = useParams();
 	const [loadedMeetups, setLoadedMeetups] = useState({ recipe: [], special: [] });
 	const [specials, setSpecials] = useState(null);
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const fetchRecipes = await axios(`http://localhost:3001/recipes/${id}`);
@@ -42,15 +43,19 @@ function Recipe(props) {
 	));
 
 	const ingredient = loadedMeetups?.recipe?.ingredients?.map((keys) => (
-		<Box m={2}>
-			<Paper>
-				<Typography>
-					<ListItem>name :{keys.name}</ListItem>
+		<ul>
+			<Typography variant="subtitle1">
+				<li>
+					<ListItem>{keys.name}</ListItem>
+				</li>		
+				<li>
 					<ListItem>amount: {keys.amount}</ListItem>
+				</li>
+				<li>
 					<ListItem>measurement:{keys.measurement}</ListItem>
-				</Typography>		
-			</Paper>
-		</Box>
+				</li>
+			</Typography>
+		</ul>
 	));
 
 	return (
@@ -70,13 +75,15 @@ function Recipe(props) {
 					geo={specials?.geo}
 				/>
 			</Box>
-			<Specials
-				type={specials?.type}
-				title={specials?.title}
-				text={specials?.text}
-				code={specials?.code}
-				geo={specials?.geo}
-			/>
+			<Box className={classes.specials}>
+				<Specials
+					type={specials?.type}
+					title={specials?.title}
+					text={specials?.text}
+					code={specials?.code}
+					geo={specials?.geo}
+				/>
+			</Box>
 		</Box>
 	);
 }

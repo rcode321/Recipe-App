@@ -14,6 +14,7 @@ import OutdoorGrillIcon from "@mui/icons-material/OutdoorGrill";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import DateRangeIcon from "@mui/icons-material/DateRange";
+
 const RecipeList = ({
 	directions,
 	ingredients,
@@ -26,18 +27,19 @@ const RecipeList = ({
 	postDate,
 	images,
 }) => {
+
 	return (
 	<Box>
 		<Box className={classes.container}>
-			<Box m={4}>
-				<Typography variant="h3"> {title}</Typography>
-				<Typography variant="subtitle1"> {description}</Typography>
-			</Box>
+	<Box m={4}>
+		<Typography variant="h3"> {title}</Typography>
+		<Typography variant="subtitle1"> {description}</Typography>
+	</Box>
 			<Box className={classes.image}>
-				<img src={images} alt={title} />
-			</Box>
-			<Box className={classes.cards}>
-				<List sx={{ width: "100%", maxWidth: 360 }}>
+			<img src={images} alt={title} />
+	</Box>
+	<Box className={classes.cards}>
+	<List sx={{ width: "100%", maxWidth: 360 }}>
 					<ListItem>
 						<ListItemAvatar>
 							<Avatar>
@@ -74,8 +76,19 @@ const RecipeList = ({
 				</List>
 			</Box>
 		</Box>
-		<Box className={classes.ingredientsCard}>
-			{ingredients}
+		<Typography variant="h2" p={2}>Directions</Typography>
+		<Box p={2}>
+			<Paper elevation={2}>
+			<ListItem>
+				<Typography>{directions}</Typography>
+			</ListItem>
+			</Paper>
+		</Box>
+		<Typography variant="h2" p={2}>Ingredients</Typography>
+		<Box p={1}>
+			<Box className={classes.ingredientsCard}>
+				{ingredients}
+			</Box>
 		</Box>
 	</Box>
 	);

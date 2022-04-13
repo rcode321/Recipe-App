@@ -14,3 +14,11 @@
 	margin-top: 1rem;
 	width: 100%;
 }
+
+.specials {
+	position: absolute;
+	background-color: rgba(252, 248, 248, 0.74);
+	border-radius: 20px;
+	top: 60%;
+	left: 50%;
+}

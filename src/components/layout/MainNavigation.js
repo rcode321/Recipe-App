@@ -59,7 +59,7 @@ function MainNavigation() {
 		},
 	}));
 	return (
-		<Box className={classes.navbar2}>
+		<Box className={classes.navbar}>
 			<Toolbar>
 				<Typography>Recipe App</Typography>
 				<Typography
